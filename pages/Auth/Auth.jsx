@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Modal from '../../component/modal/Modal'
 import { FaQuestionCircle } from "react-icons/fa";
 import { date, mounth } from '../../faker/faker';
-import { createToast } from '../../helpers/helpers'
+import { createToast, isEmail } from '../../helpers/helpers'
 
 
 
@@ -39,6 +39,8 @@ const handleUserRegister = (e) =>{
   //validation
   if(!input.frist_name || !input.sur_name ||!input.moe || !input.password ){
     createToast("All Fiends Are Required")
+  }else if(!isEmail(input.moe)){
+    createToast("Email is not valid")
   }else{
     createToast("Data Stable","success")
   }
